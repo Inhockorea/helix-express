@@ -1,8 +1,10 @@
 /** Simple demo Express app. */
 
 const express = require("express");
-
+const cors = require('cors')
 const app = express();
+
+app.use(cors())
 
 // for processing JSON:
 app.use(express.json());
@@ -19,7 +21,7 @@ app.get("/", function(req, res) {
 /** Show info on player. */
 
 app.get("/nba/:player", function(req, res) {
-  return res.send(`The 2019-2020 NBA MVP is ${req.params.player}`);
+  return res.json(`The 2019-2020 NBA MVP is ${req.params.player}`);
 });
 
 /** Show JSON on player */
@@ -59,8 +61,8 @@ app.get("/nba/:player", function(req, res) {
   return res.json("Hello Jokic!");
 });
 
-/** Start server on port 3000 */
+/** Start server on port 5000 */
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000.");
+app.listen(5000, function() {
+  console.log("Server started on port 5000.");
 });
